@@ -16,7 +16,7 @@ function createStars() {
   }
 }
 
-// Create floating background balloons - FIXED
+// Create floating background balloons - FIXED to appear on sides
 function createFloatingBalloons() {
   const balloonsContainer = document.getElementById("floatingBalloons");
   const colors = ["#ff5e7d", "#4cd964", "#5ac8fa", "#ffde59", "#af52de"];
@@ -33,15 +33,32 @@ function createFloatingBalloons() {
     const size = Math.random() * 30 + 40;
     const colorIndex = Math.floor(Math.random() * colors.length);
     
+    // Position balloons only on the sides (not in center)
+    let left, top;
+    
+    // Determine side: left or right
+    const isLeftSide = Math.random() > 0.5;
+    
+    if (isLeftSide) {
+      // Left side (0-30% width)
+      left = Math.random() * 30;
+    } else {
+      // Right side (70-100% width)
+      left = Math.random() * 30 + 70;
+    }
+    
+    // Top position (avoid center area)
+    top = Math.random() * 80 + 10;
+    
     balloon.style.width = size + "px";
     balloon.style.height = size * 1.2 + "px";
     balloon.style.backgroundColor = colors[colorIndex];
     balloon.style.background = `radial-gradient(circle at 30% 30%, ${colors[colorIndex]}, ${darkenColor(colors[colorIndex], 20)})`;
-    balloon.style.left = Math.random() * 85 + 5 + "vw";
-    balloon.style.top = Math.random() * 70 + 10 + "vh";
+    balloon.style.left = left + "vw";
+    balloon.style.top = top + "vh";
     balloon.style.animationDelay = Math.random() * 15 + "s";
     balloon.style.animationDuration = Math.random() * 10 + 20 + "s";
-    balloon.style.zIndex = "500";
+    balloon.style.zIndex = "100";
 
     // Add pop sound on click
     balloon.addEventListener("click", function (e) {
@@ -126,7 +143,7 @@ function createPopParticles(balloon) {
     particle.style.backgroundColor = balloonColor;
     particle.style.left = (rect.left + rect.width / 2) + "px";
     particle.style.top = (rect.top + rect.height / 2) + "px";
-    particle.style.zIndex = "499";
+    particle.style.zIndex = "99";
     
     document.body.appendChild(particle);
     
@@ -261,7 +278,7 @@ lightCandleBtn.addEventListener("click", function () {
   }, 1000);
 });
 
-// Cake cutting - FIXED
+// Cake cutting - FIXED (Candle won't move)
 cutCakeBtn.addEventListener("click", function () {
   // Play cutting sound
   cuttingSound.currentTime = 0;
@@ -271,31 +288,12 @@ cutCakeBtn.addEventListener("click", function () {
   // Show cutting animation
   cutAnimation.classList.add("cake-cut");
 
-  // Split the cake into two parts - FIXED
+  // Split the cake into two parts - FIXED (candle stays in place)
   setTimeout(() => {
     cake.classList.add("cake-split");
     
-    // Create visual effect for both halves
-    const cakeLayers = [
-      cake.querySelector('.cake-bottom'), 
-      cake.querySelector('.cake-middle'), 
-      cake.querySelector('.cake-top')
-    ];
-    
-    // Add shadows to create split effect
-    cakeLayers.forEach((layer) => {
-      if (layer) {
-        // Create the right half using pseudo-element (already in CSS)
-        // Just trigger the animation
-        layer.style.boxShadow = layer.style.boxShadow + ', -5px 0 10px rgba(0, 0, 0, 0.2)';
-      }
-    });
-    
-    // Make candle also split slightly
-    const candle = cake.querySelector('.candle');
-    if (candle) {
-      candle.style.transform = 'translateX(-50%) translateX(-10px)';
-    }
+    // The candle should NOT move with the cake layers
+    // Candle remains centered while cake layers split
   }, 500);
 
   // Create lots of confetti
@@ -331,61 +329,3 @@ document.querySelectorAll('.balloons .balloon').forEach(balloon => {
     createConfetti(20);
     
     // Play pop sound
-    const popSound = document.getElementById("popSound");
-    popSound.currentTime = 0;
-    popSound.volume = 0.5;
-    popSound.play();
-    
-    // Remove balloon after animation
-    setTimeout(() => {
-      this.style.visibility = 'hidden';
-    }, 500);
-  });
-});
-
-// Initialize
-window.addEventListener("load", function () {
-  createStars();
-  
-  // Create floating balloons with delay
-  setTimeout(() => {
-    createFloatingBalloons();
-  }, 1000);
-
-  // Try to autoplay music after a short delay
-  setTimeout(() => {
-    birthdayMusic
-      .play()
-      .then(() => {
-        isPlaying = true;
-        playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-      })
-      .catch((e) => {
-        console.log("Autoplay prevented.");
-      });
-  }, 1500);
-
-  // Create some initial confetti
-  setTimeout(() => {
-    createConfetti(50);
-  }, 2500);
-
-  // Add a birthday message in the console
-  console.log(
-    "%c🎂 Happy Birthday Shareqa Shaomi! 🎂",
-    "color: #ffde59; font-size: 24px; font-weight: bold;",
-  );
-  console.log(
-    "%cWishing you a day filled with joy, laughter, and wonderful surprises!",
-    "color: #ff5e7d; font-size: 16px;",
-  );
-});
-
-// Ensure balloons work even if user clicks dynamically
-document.addEventListener('click', function(e) {
-  if (e.target.classList.contains('floating-balloon')) {
-    e.preventDefault();
-    e.stopPropagation();
-    popBalloon(e.target);
-  }
-});
