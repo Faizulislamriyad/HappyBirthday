@@ -329,3 +329,61 @@ document.querySelectorAll('.balloons .balloon').forEach(balloon => {
     createConfetti(20);
     
     // Play pop sound
+    const popSound = document.getElementById("popSound");
+    popSound.currentTime = 0;
+    popSound.volume = 0.5;
+    popSound.play();
+    
+    // Remove balloon after animation
+    setTimeout(() => {
+      this.style.visibility = 'hidden';
+    }, 500);
+  });
+});
+
+// Initialize
+window.addEventListener("load", function () {
+  createStars();
+  
+  // Create floating balloons with delay
+  setTimeout(() => {
+    createFloatingBalloons();
+  }, 1000);
+
+  // Try to autoplay music after a short delay
+  setTimeout(() => {
+    birthdayMusic
+      .play()
+      .then(() => {
+        isPlaying = true;
+        playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+      })
+      .catch((e) => {
+        console.log("Autoplay prevented.");
+      });
+  }, 1500);
+
+  // Create some initial confetti
+  setTimeout(() => {
+    createConfetti(50);
+  }, 2500);
+
+  // Add a birthday message in the console
+  console.log(
+    "%c🎂 Happy Birthday Shareqa Shaomi! 🎂",
+    "color: #ffde59; font-size: 24px; font-weight: bold;",
+  );
+  console.log(
+    "%cWishing you a day filled with joy, laughter, and wonderful surprises!",
+    "color: #ff5e7d; font-size: 16px;",
+  );
+});
+
+// Ensure balloons work even if user clicks dynamically
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('floating-balloon')) {
+    e.preventDefault();
+    e.stopPropagation();
+    popBalloon(e.target);
+  }
+});
