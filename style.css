@@ -375,34 +375,34 @@ h1 {
 }
 
 /* Cake split effect - FIXED */
-/* .cake-split .cake-bottom {
+.cake-split .cake-bottom {
   transform: translateX(-50%) translateX(-40px) !important;
   box-shadow:
     inset 0 -15px 0 #d32f75,
     0 10px 20px rgba(0, 0, 0, 0.3),
     -5px 0 10px rgba(0, 0, 0, 0.2);
-} */
+}
 
-/* .cake-split .cake-middle {
+.cake-split .cake-middle {
   transform: translateX(-50%) translateX(-30px) !important;
   box-shadow:
     inset 0 -12px 0 #d32f75,
     0 8px 15px rgba(0, 0, 0, 0.2),
     -4px 0 8px rgba(0, 0, 0, 0.15);
-} */
+}
 
-/* .cake-split .cake-top {
+.cake-split .cake-top {
   transform: translateX(-50%) translateX(-20px) !important;
   box-shadow:
     inset 0 -10px 0 #d32f75,
     0 6px 12px rgba(0, 0, 0, 0.2),
     -3px 0 6px rgba(0, 0, 0, 0.1);
-} */
+}
 
 /* Create right halves of the cake */
-/* .cake-bottom::after,
-.cake-middle::after,
-.cake-top::after {
+.cake-split .cake-bottom::after,
+.cake-split .cake-middle::after,
+.cake-split .cake-top::after {
   content: '';
   position: absolute;
   width: 100%;
@@ -410,39 +410,34 @@ h1 {
   background: inherit;
   border-radius: inherit;
   box-shadow: inherit;
-  opacity: 0;
-  transition: opacity 1.5s ease;
-} */
+}
 
-/* .cake-split .cake-bottom::after {
-  opacity: 1;
+.cake-split .cake-bottom::after {
   left: 40px;
   transform: translateX(-50%);
   box-shadow:
     inset 0 -15px 0 #d32f75,
     0 10px 20px rgba(0, 0, 0, 0.3),
     5px 0 10px rgba(0, 0, 0, 0.2);
-} */
+}
 
-/* .cake-split .cake-middle::after {
-  opacity: 1;
+.cake-split .cake-middle::after {
   left: 30px;
   transform: translateX(-50%);
   box-shadow:
     inset 0 -12px 0 #d32f75,
     0 8px 15px rgba(0, 0, 0, 0.2),
     4px 0 8px rgba(0, 0, 0, 0.15);
-} */
+}
 
-/* .cake-split .cake-top::after {
-  opacity: 1;
+.cake-split .cake-top::after {
   left: 20px;
   transform: translateX(-50%);
   box-shadow:
     inset 0 -10px 0 #d32f75,
     0 6px 12px rgba(0, 0, 0, 0.2),
     3px 0 6px rgba(0, 0, 0, 0.1);
-} */
+}
 
 .features {
   display: flex;
@@ -652,10 +647,10 @@ footer {
   height: 80px;
   border-radius: 50%;
   cursor: pointer;
-  animation: floating 15s infinite ease-in-out;
+  animation: floating 20s infinite ease-in-out;
   transition: transform 0.3s;
   box-shadow: inset -5px -5px 5px rgba(0, 0, 0, 0.2);
-  z-index: 500;
+  z-index: 100;
   pointer-events: auto;
 }
 
@@ -719,7 +714,7 @@ footer {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 500;
+  z-index: 100;
 }
 
 #floatingBalloons .floating-balloon {
