@@ -579,8 +579,8 @@ footer {
 /* Floating Background Balloons - FIXED */
 .floating-balloon {
   position: fixed;
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   cursor: pointer;
   animation: floating 20s infinite ease-in-out;
@@ -588,7 +588,7 @@ footer {
   box-shadow: inset -5px -5px 5px rgba(0, 0, 0, 0.2);
   z-index: 100;
   pointer-events: auto;
-  opacity: 0.2;
+  opacity: 0.1;
 }
 
 .floating-balloon:before {
@@ -648,8 +648,8 @@ footer {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 60%;
+  height: 60%;
   pointer-events: none;
   z-index: 100;
 }
@@ -701,8 +701,8 @@ footer {
   /* ... existing code ... */
   
   .floating-balloon {
-    width: 15px; /* 50px থেকে 35px করা হলো */
-    height: 20px; /* 70px থেকে 50px করা হলো */
-    opacity: 0.2; /* মোবাইলে আরও কম opacity */
+    width: 5px; /* 50px থেকে 35px করা হলো */
+    height: 10px; /* 70px থেকে 50px করা হলো */
+    opacity: 0.1; /* মোবাইলে আরও কম opacity */
   }
 }
