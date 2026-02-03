@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Shareqa Shaomi!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background stars -->
+    <div id="stars"></div>
+    
+    <!-- Floating Background Balloons -->
+    <div id="floatingBalloons"></div>
+    
+    <!-- Music Player -->
+    <div class="music-player">
+        <button class="music-control" id="playPauseBtn">
+            <i class="fas fa-play"></i>
+        </button>
+        <input type="range" min="0" max="100" value="50" class="volume-slider" id="volumeSlider">
+        <div class="song-title" id="songTitle">Happy Birthday BGM</div>
+    </div>
+    
+    <div class="container">
+        <header>
+            <h1>Happy Birthday!</h1>
+            <div class="birthday-girl">Shareqa Shaomi</div>
+            <div class="balloons">
+                <div class="balloon"></div>
+                <div class="balloon"></div>
+                <div class="balloon"></div>
+                <div class="balloon"></div>
+                <div class="balloon"></div>
+            </div>
+        </header>
+        
+        <section class="hero-section">
+            <div class="cake-container">
+                <div class="cake" id="cake">
+                    <div class="cake-bottom"></div>
+                    <div class="cake-middle"></div>
+                    <div class="cake-top"></div>
+                    <div class="candle"></div>
+                    <div class="flame" id="candleFlame"></div>
+                    <div class="cut-cake-animation" id="cutAnimation"></div>
+                </div>
+                
+                <div class="interactive-buttons">
+                    <button class="action-button" id="lightCandleBtn">
+                        <i class="fas fa-fire"></i> Light the Candle
+                    </button>
+                    
+                    <button class="action-button knife-button" id="cutCakeBtn">
+                        <i class="fas fa-utensils"></i> Cut the Cake
+                    </button>
+                </div>
+            </div>
+            
+            <div class="message-box">
+                <h2>To the Shaomi!</h2>
+                <p>On your special day, I want to celebrate the wonderful person you are! Your kindness, intelligence, and beautiful spirit make everyone around you happier.</p>
+                <p>May this year bring you endless joy, success in all your endeavors, and dreams that turn into reality. You deserve the very best that life has to offer!</p>
+                <div class="birthday-wish">
+                    "Wishing you a day filled with love, laughter, and all the happiness in the world! ❤️"
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <p>This birthday website was made for Shareqa Shaomi</p>
+            <p>Wishing you the most fantastic birthday celebration! 🎉🎂🎈</p>
+            <p>Faizul Islam Riyad</p>
+        </footer>
+    </div>
+    
+    <!-- Audio for background music -->
+    <audio id="birthdayMusic" loop>
+        <!-- Replace with your BGM file path -->
+        <source src="Shaomi.WAV" type="audio/mpeg">
+        <!-- Fallback if the above file doesn't exist -->
+        <source src="https://assets.mixkit.co/music/preview/mixkit-happy-birthday-to-you-443.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- Audio for candle lighting sound -->
+    <audio id="candleSound">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-match-ignite-1665.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- Audio for cake cutting sound -->
+    <audio id="cuttingSound">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-cutting-into-something-with-a-knife-2571.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- Audio for balloon pop sound -->
+    <audio id="popSound">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-balloon-pop-2928.mp3" type="audio/mpeg">
+    </audio>
+    
+    <script src="script.js"></script>
+</body>
+</html>
