@@ -20,7 +20,7 @@ function createStars() {
 function createFloatingBalloons() {
   const balloonsContainer = document.getElementById("floatingBalloons");
   const colors = ["#ff5e7d", "#4cd964", "#5ac8fa", "#ffde59", "#af52de"];
-  const balloonCount = 15;
+  const balloonCount = 5;
 
   // Clear existing balloons
   balloonsContainer.innerHTML = '';
@@ -387,3 +387,4 @@ document.addEventListener('click', function(e) {
     popBalloon(e.target);
   }
 });
+
